@@ -81,22 +81,22 @@ This checklist focuses exclusively on the layout, authentication, and styling as
 ## 3. Global Styling & Theming
 
 ### 3.1 Setup Global Styles
-- [ ] **3.1.1 Create/Update File:** `src/app/globals.css`
+- [x] **3.1.1 Create/Update File:** `src/app/globals.css`
   - Import Tailwind base, components, and utilities.
   - Include global CSS rules from the provided style guide (e.g., CSS variables for colors, fonts, shadows, and border radii).
   - Ensure responsive design and dark mode support using `[data-theme="dark"]` selectors.
-- [ ] **3.1.2 Verify font settings:** Use 'Inter' as the primary font.
-- [ ] **3.1.3 Document styling in inline comments where necessary.
+- [x] **3.1.2 Verify font settings:** Use 'Inter' as the primary font.
+- [x] **3.1.3 Document styling in inline comments where necessary.
 
 ### 3.2 Theming and Responsive Design
-- [ ] **3.2.1 Create Theme Provider Component:** `src/components/theme/ThemeProvider.tsx`
+- [x] **3.2.1 Create Theme Provider Component:** `src/components/theme/ThemeProvider.tsx`
   - Wrap the application to support light/dark mode switching.
-- [ ] **3.2.2 Create Toast Notification Component:** `src/components/theme/ThemeAwareToast.tsx`
+- [x] **3.2.2 Create Toast Notification Component:** `src/components/theme/ThemeAwareToast.tsx`
   - Use style variables for color, shadow, and spacing.
-- [ ] **3.2.3 Create Storybook Stories for Theming:** `src/stories/Theme.stories.tsx`
+- [x] **3.2.3 Create Storybook Stories for Theming:** `src/stories/Theme.stories.tsx`
   - **State 1 (Light Mode):** Display components in light mode.
   - **State 2 (Dark Mode):** Display components in dark mode.
-- [ ] **3.2.4 Ensure all UI components (navbar, sidebar, footer, etc.) use CSS variables (e.g., `var(--primary)`, `var(--background)`, `var(--radius)`) as defined in `styles.css`.
+- [x] **3.2.4 Ensure all UI components (navbar, sidebar, footer, etc.) use CSS variables (e.g., `var(--primary)`, `var(--background)`, `var(--radius)`) as defined in `styles.css`.
 
 ---
 
