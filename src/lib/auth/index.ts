@@ -1,4 +1,4 @@
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/lib/db";
 import {
   getServerSession,
@@ -57,74 +57,50 @@ declare module "next-auth" {
   }
 }
 
+/**
+ * NextAuth configuration options
+ * @see https://next-auth.js.org/configuration/options
+ */
 export const authOptions: NextAuthOptions = {
+  // Use Prisma adapter for database integration
   adapter: PrismaAdapter(prisma),
+
+  // Configure authentication providers
   providers: [
     EmailProvider({
       server: {
-        host: "smtp.resend.com",
-        port: 465,
+        host: process.env.EMAIL_SERVER_HOST,
+        port: process.env.EMAIL_SERVER_PORT,
         auth: {
-          user: "resend",
+          user: process.env.EMAIL_SERVER_USER,
           pass: process.env.EMAIL_SERVER_PASSWORD,
         },
       },
-      from: process.env.EMAIL_FROM || "onboarding@resend.dev",
+      from: process.env.EMAIL_FROM,
     }),
   ],
+
+  // Configure session handling
   session: {
-    strategy: "database",
+    strategy: "jwt",
   },
-  secret: process.env.NEXTAUTH_SECRET,
-  callbacks: {
-    async signIn({ user }) {
-      try {
-        const email = user?.email;
-        if (!email) return false;
 
-        /*
-        // Enable this to restrict sign-ins to certain domains or allowlist
-        const domainCheck = ALLOWED_DOMAINS.some((d) => email.endsWith(d));
-        if (!domainCheck) {
-          const inAllowlist = await prisma.allowlist.findUnique({
-            where: { email },
-          });
-
-          if (!inAllowlist) {
-            return false;
-          }
-        }
-        */
-
-        return true;
-      } catch (error) {
-        console.error("SignIn callback error:", error);
-        return false;
-      }
-    },
-    async session({ session, user }) {
-      try {
-        return {
-          ...session,
-          user: {
-            ...session.user,
-            id: user.id,
-            role: user.role,
-            login: user.login,
-            isAdmin: user.isAdmin,
-          },
-        };
-      } catch (error) {
-        console.error("Session callback error:", error);
-        return session;
-      }
-    },
-  },
+  // Configure pages
   pages: {
     signIn: "/auth/signin",
     signOut: "/auth/signout",
     error: "/auth/error",
     verifyRequest: "/auth/verify",
+  },
+
+  // Configure callbacks
+  callbacks: {
+    async session({ session, token }) {
+      if (token.sub && session.user) {
+        session.user.id = token.sub;
+      }
+      return session;
+    },
   },
 };
 

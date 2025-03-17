@@ -7,33 +7,33 @@ This checklist focuses exclusively on the layout, authentication, and styling as
 ## 1. Global Application Layout
 
 ### 1.1 Create Global Layout Component
-- [ ] **1.1.1 Create File:** `src/app/layout.tsx`
+- [x] **1.1.1 Create File:** `src/app/layout.tsx`
   - Define the root layout to include a header (navbar), optional sidebar, main content area, and footer.
   - Ensure the layout uses responsive design principles (e.g., flexible grid, responsive paddings).
 
 ### 1.2 Implement Header (Navbar)
-- [ ] **1.2.1 In `src/app/layout.tsx`:**
+- [x] **1.2.1 In `src/app/layout.tsx`:**
   - Add a `<header>` element styled using CSS variables from `styles.css` (e.g., `background-color: var(--card-bg)`, `box-shadow: var(--shadow)`).
   - Include a logo (icon and text) and navigation links (e.g., Home, Dashboard, Trading, Settings).
-  - Add an authentication control element (e.g., a “Sign In” button or user profile dropdown).
-- [ ] **1.2.2 Create Storybook Stories:** `src/stories/Navbar.stories.tsx`
-  - **State 1 (Logged Out):** Navbar shows logo, navigation links, and a “Sign In” button.
-  - **State 2 (Logged In):** Navbar displays user profile information and a “Sign Out” option.
+  - Add an authentication control element (e.g., a "Sign In" button or user profile dropdown).
+- [x] **1.2.2 Create Storybook Stories:** `src/stories/Navbar.stories.tsx`
+  - **State 1 (Logged Out):** Navbar shows logo, navigation links, and a "Sign In" button.
+  - **State 2 (Logged In):** Navbar displays user profile information and a "Sign Out" option.
 
 ### 1.3 Implement Sidebar (Optional)
-- [ ] **1.3.1 Create Component:** `src/components/Sidebar.tsx`
+- [x] **1.3.1 Create Component:** `src/components/Sidebar.tsx`
   - Display navigation options for different trading platforms and timeframes.
   - Style the sidebar with a collapsible/expandable behavior using Tailwind CSS and CSS variables.
-- [ ] **1.3.2 Create Storybook Stories:** `src/stories/Sidebar.stories.tsx`
+- [x] **1.3.2 Create Storybook Stories:** `src/stories/Sidebar.stories.tsx`
   - **State 1 (Collapsed):** Sidebar showing only icons.
   - **State 2 (Expanded):** Sidebar displaying full navigation labels.
 
 ### 1.4 Implement Main Content Area and Footer
-- [ ] **1.4.1 Update `src/app/layout.tsx`:**
+- [x] **1.4.1 Update `src/app/layout.tsx`:**
   - Ensure the `<main>` element uses responsive padding (e.g., `p-4`, `flex-grow`) and adapts to various screen sizes.
   - Add a `<footer>` element with copyright text and quick links (Privacy Policy, Terms, Contact).
   - Style the footer using CSS variables such as `var(--card-bg)` and `var(--text-light)`.
-- [ ] **1.4.2 Create Storybook Stories:** `src/stories/Layout.stories.tsx`
+- [x] **1.4.2 Create Storybook Stories:** `src/stories/Layout.stories.tsx`
   - **State 1 (Desktop):** Layout displays header, main content, and footer as expected.
   - **State 2 (Mobile):** Layout adapts with responsive header and footer adjustments.
 
@@ -52,13 +52,13 @@ This checklist focuses exclusively on the layout, authentication, and styling as
 ### 2.2 Create Authentication Pages (Frontend)
 - [ ] **2.2.1 Create Sign In Page:** `src/app/auth/signin/page.tsx`
   - Render a sign-in form using Tailwind CSS and style variables (e.g., button color `var(--primary)`).
-  - Integrate NextAuth’s `signIn` function.
+  - Integrate NextAuth's `signIn` function.
   - Include form validation and error handling.
 - [ ] **2.2.2 Create Storybook Stories:** `src/stories/SignIn.stories.tsx`
   - **State 1 (Empty Form):** Display form with placeholders.
   - **State 2 (Loading):** Show spinner while processing sign in.
 - [ ] **2.2.3 Create Sign Out Page:** `src/app/auth/signout/page.tsx`
-  - Render a sign-out confirmation with a “Sign Out” button that triggers NextAuth’s `signOut`.
+  - Render a sign-out confirmation with a "Sign Out" button that triggers NextAuth's `signOut`.
 - [ ] **2.2.4 Create Storybook Stories:** `src/stories/SignOut.stories.tsx`
   - **State 1 (Confirmation):** Display confirmation prompt.
 - [ ] **2.2.5 Create Error and Verification Pages:**
@@ -70,11 +70,11 @@ This checklist focuses exclusively on the layout, authentication, and styling as
 
 ### 2.3 Integrate Authentication into Global Layout
 - [ ] **2.3.1 Update Global Layout (`src/app/layout.tsx` or `src/components/ClientProvider.tsx`):**
-  - Wrap the application with NextAuth’s `SessionProvider`.
-  - In the header, conditionally display authentication controls (e.g., “Sign In” button when not authenticated, user profile dropdown when authenticated).
+  - Wrap the application with NextAuth's `SessionProvider`.
+  - In the header, conditionally display authentication controls (e.g., "Sign In" button when not authenticated, user profile dropdown when authenticated).
 - [ ] **2.3.2 Create Storybook Stories:** `src/stories/NavbarAuth.stories.tsx`
-  - **State 1 (Not Authenticated):** Navbar shows “Sign In” button.
-  - **State 2 (Authenticated):** Navbar shows user’s profile with “Sign Out” option.
+  - **State 1 (Not Authenticated):** Navbar shows "Sign In" button.
+  - **State 2 (Authenticated):** Navbar shows user's profile with "Sign Out" option.
 
 ---
 
