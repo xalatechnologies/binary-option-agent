@@ -69,14 +69,23 @@ export const authOptions: NextAuthOptions = {
   providers: [
     EmailProvider({
       server: {
-        host: process.env.EMAIL_SERVER_HOST,
-        port: process.env.EMAIL_SERVER_PORT,
+        host: process.env.EMAIL_SERVER_HOST!,
+        port: Number(process.env.EMAIL_SERVER_PORT),
         auth: {
-          user: process.env.EMAIL_SERVER_USER,
-          pass: process.env.EMAIL_SERVER_PASSWORD,
+          user: process.env.EMAIL_SERVER_USER!,
+          pass: process.env.EMAIL_SERVER_PASSWORD!,
         },
       },
-      from: process.env.EMAIL_FROM,
+      from: process.env.EMAIL_FROM!,
+      normalizeIdentifier(identifier: string): string {
+        // Get the first two elements only,
+        // separated by `@` from user input.
+        let [local, domain] = identifier.toLowerCase().trim().split("@");
+        // The part before "@" can contain a ","
+        // but we remove it on the domain part
+        domain = domain?.split(",")[0];
+        return `${local}@${domain}`;
+      },
     }),
   ],
 
