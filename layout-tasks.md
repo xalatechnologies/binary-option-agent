@@ -42,37 +42,37 @@ This checklist focuses exclusively on the layout, authentication, and styling as
 ## 2. Authentication Integration
 
 ### 2.1 Configure Authentication Backend
-- [ ] **2.1.1 Update File:** `src/lib/auth/index.ts`
+- [x] **2.1.1 Update File:** `src/lib/auth/index.ts`
   - Configure NextAuth providers (e.g., Email) and Prisma adapter.
   - Use environment variables for sensitive data (e.g., `EMAIL_SERVER`, `NEXTAUTH_SECRET`).
   - Add inline documentation for the authentication flow.
-- [ ] **2.1.2 Create API Route:** `src/app/api/auth/[...nextauth]/route.ts`
+- [x] **2.1.2 Create API Route:** `src/app/api/auth/[...nextauth]/route.ts`
   - Implement the NextAuth API endpoint for handling sign in, sign out, and session management.
 
 ### 2.2 Create Authentication Pages (Frontend)
-- [ ] **2.2.1 Create Sign In Page:** `src/app/auth/signin/page.tsx`
+- [x] **2.2.1 Create Sign In Page:** `src/app/auth/signin/page.tsx`
   - Render a sign-in form using Tailwind CSS and style variables (e.g., button color `var(--primary)`).
   - Integrate NextAuth's `signIn` function.
   - Include form validation and error handling.
-- [ ] **2.2.2 Create Storybook Stories:** `src/stories/SignIn.stories.tsx`
+- [x] **2.2.2 Create Storybook Stories:** `src/stories/SignIn.stories.tsx`
   - **State 1 (Empty Form):** Display form with placeholders.
   - **State 2 (Loading):** Show spinner while processing sign in.
-- [ ] **2.2.3 Create Sign Out Page:** `src/app/auth/signout/page.tsx`
+- [x] **2.2.3 Create Sign Out Page:** `src/app/auth/signout/page.tsx`
   - Render a sign-out confirmation with a "Sign Out" button that triggers NextAuth's `signOut`.
-- [ ] **2.2.4 Create Storybook Stories:** `src/stories/SignOut.stories.tsx`
+- [x] **2.2.4 Create Storybook Stories:** `src/stories/SignOut.stories.tsx`
   - **State 1 (Confirmation):** Display confirmation prompt.
-- [ ] **2.2.5 Create Error and Verification Pages:**
+- [x] **2.2.5 Create Error and Verification Pages:**
   - **Error Page:** `src/app/auth/error/page.tsx` – Display error messages styled with `var(--danger)`.
   - **Verification Page:** `src/app/auth/verify/page.tsx` – Show verification status and instructions.
-- [ ] **2.2.6 Create Storybook Stories:** `src/stories/AuthErrors.stories.tsx`
+- [x] **2.2.6 Create Storybook Stories:** `src/stories/AuthErrors.stories.tsx`
   - **State 1 (Error):** Error page with styled alert using `var(--danger)`.
   - **State 2 (Verification):** Page with verification message.
 
 ### 2.3 Integrate Authentication into Global Layout
-- [ ] **2.3.1 Update Global Layout (`src/app/layout.tsx` or `src/components/ClientProvider.tsx`):**
+- [x] **2.3.1 Update Global Layout (`src/app/layout.tsx` or `src/components/ClientProvider.tsx`):**
   - Wrap the application with NextAuth's `SessionProvider`.
   - In the header, conditionally display authentication controls (e.g., "Sign In" button when not authenticated, user profile dropdown when authenticated).
-- [ ] **2.3.2 Create Storybook Stories:** `src/stories/NavbarAuth.stories.tsx`
+- [x] **2.3.2 Create Storybook Stories:** `src/stories/NavbarAuth.stories.tsx`
   - **State 1 (Not Authenticated):** Navbar shows "Sign In" button.
   - **State 2 (Authenticated):** Navbar shows user's profile with "Sign Out" option.
 
